@@ -4,9 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     let Food = sequelize.define('foods', {
         freezeTableName: true,
         id: {
-            primaryKey:   true,
-            type:         DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4
+            primaryKey:    true,
+            type:          DataTypes.NUMBER
         },
         name: {
             type: DataTypes.STRING

@@ -12,6 +12,12 @@ class FoodService {
             attributes: ['id']
         });
     }
+
+    async create(food) {
+        return foodModel.create(food).catch(err => {
+            console.log(err);
+        });
+    }
 }
 
 module.exports = new FoodService();

@@ -14,7 +14,8 @@
     "sqlite3": "*",
     "koa": "^2.5.3",
     "koa-router": "^7.4.0",
-    "winston": "^3.2.1",
-    "koa-req-logger": "^1.5.3"
+    "koa-req-logger": "^1.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "winston": "^3.2.1"
   }
 }
