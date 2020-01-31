@@ -1,0 +1,34 @@
+{"message":"method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: freezeTableName","level":"error","timestamp":"2019-12-13T15:50:04.144Z"}
+{"message":"method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: freezeTableName","level":"error","timestamp":"2019-12-13T15:55:16.707Z"}
+{"message":"method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: freezeTableName","level":"error","timestamp":"2019-12-13T15:56:41.520Z"}
+{"message":"method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: freezeTableName","level":"error","timestamp":"2019-12-13T15:56:58.179Z"}
+{"message":"method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: freezeTableName","level":"error","timestamp":"2019-12-13T15:57:07.670Z"}
+{"message":"method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: freezeTableName","level":"error","timestamp":"2019-12-13T15:57:19.464Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:35:12.296Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:35:38.485Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:36:44.699Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:36:50.414Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:43:33.657Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:44:07.636Z"}
+{"message":"method: create, error: SequelizeTimeoutError: SQLITE_BUSY: database is locked","level":"error","timestamp":"2019-12-16T10:47:14.220Z"}
+{"message":"method: create, error: SequelizeTimeoutError: SQLITE_BUSY: database is locked","level":"error","timestamp":"2019-12-16T10:48:19.002Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:49:30.314Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:50:29.668Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:50:31.707Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:50:33.978Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:52:19.665Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:54:59.067Z"}
+{"message":"method: create, error: SequelizeUniqueConstraintError: Validation error","level":"error","timestamp":"2019-12-16T10:56:31.299Z"}
+{"message":"Service journey, method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such table: journeys","level":"error","timestamp":"2019-12-16T11:18:13.080Z"}
+{"message":"Service meal, method: getAll, error: SequelizeEagerLoadingError: users is not associated to meals!","level":"error","timestamp":"2019-12-16T13:57:38.599Z"}
+{"message":"Service meal, method: getAll, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: day.freezeTableName","level":"error","timestamp":"2019-12-16T13:58:26.864Z"}
+{"message":"Service meal, method: getAll, error: SequelizeEagerLoadingError: users is not associated to meals!","level":"error","timestamp":"2019-12-16T14:01:48.335Z"}
+{"message":"Service meal, method: getAll, error: Error: Include unexpected. Element has to be either a Model, an Association or an object.","level":"error","timestamp":"2019-12-16T14:04:42.070Z"}
+{"message":"Service meal, method: getAll, error: Error: Include unexpected. Element has to be either a Model, an Association or an object.","level":"error","timestamp":"2019-12-16T14:05:42.909Z"}
+{"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: meals.food","level":"error","timestamp":"2019-12-16T14:11:22.774Z"}
+{"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: meals.food","level":"error","timestamp":"2019-12-16T14:11:32.659Z"}
+{"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: food","level":"error","timestamp":"2019-12-16T14:11:50.231Z"}
+{"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: day.freezeTableName","level":"error","timestamp":"2019-12-16T14:12:09.702Z"}
+{"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: day->journey.freezeTableName","level":"error","timestamp":"2019-12-16T14:16:45.390Z"}
+{"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: day->journey.freezeTableName","level":"error","timestamp":"2019-12-16T14:20:35.867Z"}
+{"message":"Service meal, method: getAll, error: SequelizeEagerLoadingError: journeys is not associated to journeys!","level":"error","timestamp":"2019-12-16T14:27:14.553Z"}

@@ -3,13 +3,15 @@
 const ServiceLocator = require('../../serviceLocator.js');
 const models         = ServiceLocator.Models;
 const userModel      = models.users;
+const log            = require('../../logging');
 
 class UserService {
     constructor() {}
 
-    async create(food) {
-        return userModel.create(food).catch(err => {
-            console.log(err);
+    async create(user) {
+        log.debug(`Service user, method: create`);
+        return userModel.create(user).catch(err => {
+            log.error(`Service user, method: create, error: ${err}`);
         });
     }
 }
