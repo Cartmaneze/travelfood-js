@@ -30,6 +30,13 @@ class DayService {
     async create(day) {
         log.debug(`Service day, method: create, food = ${JSON.stringify(day)}`);
         return dayModel.create(day)
+            .then(data => {
+                return {
+                    id: data.id,
+                    number: data.number,
+                    journey_id: data.journey_id
+                }
+            }) 
             .catch(err => {
                 log.error(`Service day, method: create, error: ${err}`);
             });

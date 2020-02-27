@@ -20,7 +20,8 @@ class UserController {
         return passport.authenticate('local', (err, user, info, status) => {
             if (user) {
                 ctx.login(user);
-                ctx.redirect('/food');
+             //   ctx.body(user);
+                ctx.status = 200;
             } else {
                 ctx.status = 400;
                 ctx.body = { status: 'wrong email or password' };

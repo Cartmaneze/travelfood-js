@@ -1,12 +1,12 @@
 'use strict';
 
 const ServiceLocator = require('../../serviceLocator.js');
-const models         = ServiceLocator.Models;
-const journeyModel   = models.journeys;
-const log            = require('../../logging');
+const models = ServiceLocator.Models;
+const journeyModel = models.journeys;
+const log = require('../../logging');
 
 class JourneyService {
-    constructor() {}
+    constructor() { }
 
     async getAll() {
         log.debug(`Service journey, method: getAll`);
@@ -20,7 +20,7 @@ class JourneyService {
     async get(id) {
         log.debug(`Service journey, method: get, id = ${id}`);
         return journeyModel.findOne({
-            where: {id},
+            where: { id },
             attributes: ['id', 'name', 'user_id']
         }).catch(err => {
             log.error(`Service journey, method: get, error: ${err}`);
@@ -38,7 +38,7 @@ class JourneyService {
     async update(id, newJourney) {
         log.debug(`Service journey, method: update, newJourney = ${JSON.stringify(newJourney)}, id = ${id}`);
         return journeyModel.findOne({
-            where: {id},
+            where: { id },
             attributes: ['id', 'name', 'user_id']
         }).then(journey => {
             return journey.update({
@@ -55,7 +55,7 @@ class JourneyService {
     async delete(id) {
         log.debug(`Service journey, method: delete, id = ${id}`);
         return journeyModel.findOne({
-            where: {id},
+            where: { id },
             attributes: ['id', 'name', 'user_id']
         }).then(() => {
             return journeyModel.destroy({

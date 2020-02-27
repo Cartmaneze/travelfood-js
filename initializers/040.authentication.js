@@ -6,7 +6,7 @@ const bodyParser = require('koa-bodyparser');
 
 module.exports = function(app) {
     // sessions
-    app.keys = ['super-secret-key'];
+    app.keys = ['test'];
     app.use(session(app));
 
     // body parser
@@ -23,7 +23,8 @@ module.exports = function(app) {
 
     app.use(async (ctx, next) => {
         if (ctx.isUnauthenticated() && (ctx.originalUrl !== '/login' && ctx.originalUrl !== '/register')) {
-            return ctx.redirect('/login');
+            console.log('not authorized');
+        //    return ctx.redirect('/login');
         }
         await next();
     })

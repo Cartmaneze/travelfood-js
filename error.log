@@ -32,3 +32,7 @@
 {"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: day->journey.freezeTableName","level":"error","timestamp":"2019-12-16T14:16:45.390Z"}
 {"message":"Service meal, method: get, error: SequelizeDatabaseError: SQLITE_ERROR: no such column: day->journey.freezeTableName","level":"error","timestamp":"2019-12-16T14:20:35.867Z"}
 {"message":"Service meal, method: getAll, error: SequelizeEagerLoadingError: journeys is not associated to journeys!","level":"error","timestamp":"2019-12-16T14:27:14.553Z"}
+{"message":"Service day, method: delete, error: SequelizeTimeoutError: SQLITE_BUSY: database is locked","level":"error","timestamp":"2020-02-27T12:35:44.911Z"}
+{"message":"Service day, method: delete, error: SequelizeTimeoutError: SQLITE_BUSY: database is locked","level":"error","timestamp":"2020-02-27T12:35:56.602Z"}
+{"message":"Service day, method: delete, error: SequelizeTimeoutError: SQLITE_BUSY: database is locked","level":"error","timestamp":"2020-02-27T12:36:42.113Z"}
+{"message":"Service day, method: delete, error: SequelizeTimeoutError: SQLITE_BUSY: database is locked","level":"error","timestamp":"2020-02-27T12:39:56.806Z"}

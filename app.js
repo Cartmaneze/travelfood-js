@@ -2,9 +2,11 @@
 
 const Koa          = require('koa');
 const initializers = require('./initializers');
+const cors         = require('@koa/cors');
 
 const app = new Koa();
 app.name = 'TravelFood';
+app.use(cors());
 
 initializers(app)
     .then(() => {

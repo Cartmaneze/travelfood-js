@@ -34,6 +34,7 @@ class DayController {
         let createdDay = await dayService.create(ctx.body);
         if (createdDay) {
             ctx.response.status = 200;
+            ctx.body = createdDay;
         } else {
             ctx.response.status = 400;
             ctx.body = {error: 'day was not created'};
