@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Day.associate = function (models) {
-        Day.belongsTo(models.journeys, { onDelete: 'CASCADE', foreignKey: 'journey_id' });
+        Day.belongsTo(models.journeys, { onDelete: 'CASCADE', foreignKey: 'journey_id', hooks: true, constraints: true });
         Day.hasMany(models.meals);
     };
 };

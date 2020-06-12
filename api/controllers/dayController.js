@@ -8,25 +8,14 @@ class DayController {
     constructor() {}
 
     async getAll(ctx) {
-        let allDays = await dayService.getAll();
+        let journeyId = ctx.query.journeyId;
+        let allDays = await dayService.getAll(journeyId);
         if (allDays) {
             ctx.response.status = 200;
             ctx.body = allDays;
         } else {
             ctx.response.status = 400;
             ctx.body = {error: 'days'};
-        }
-    }
-
-    async get(ctx) {
-        let id = ctx.params.id;
-        let day = await dayService.get(id);
-        if (day) {
-            ctx.response.status = 200;
-            ctx.body = day;
-        } else {
-            ctx.response.status = 400;
-            ctx.body = {error: 'no such day'};
         }
     }
 
@@ -38,17 +27,6 @@ class DayController {
         } else {
             ctx.response.status = 400;
             ctx.body = {error: 'day was not created'};
-        }
-    }
-
-    async update(ctx) {
-        let id = ctx.params.id;
-        let createdDay = await dayService.update(id, ctx.body);
-        if (createdDay) {
-            ctx.response.status = 201;
-        } else {
-            ctx.response.status = 400;
-            ctx.body = {error: 'day was not updated'};
         }
     }
 

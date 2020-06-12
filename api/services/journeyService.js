@@ -1,71 +1,67 @@
 'use strict';
 
 const ServiceLocator = require('../../serviceLocator.js');
-const models = ServiceLocator.Models;
-const journeyModel = models.journeys;
-const log = require('../../logging');
+const models         = ServiceLocator.Models;
+const journeyModel   = models.journeys;
+const dayModel       = models.days;
+const log            = require('../../logging');
+const Sequelize      = require('sequelize');
+const Op             = Sequelize.Op;
 
 class JourneyService {
     constructor() { }
 
-    async getAll() {
+    async getAll(userId) {
         log.debug(`Service journey, method: getAll`);
         return journeyModel.findAll({
-            attributes: ['id', 'name', 'user_id']
+            attributes: ['id'],
+            where: {
+                'user_id': {
+                    [Op.eq]: userId
+                }
+            }
         }).catch(err => {
             log.error(`Service journey, method: getAll, error: ${err}`);
         });
     }
 
-    async get(id) {
-        log.debug(`Service journey, method: get, id = ${id}`);
-        return journeyModel.findOne({
-            where: { id },
-            attributes: ['id', 'name', 'user_id']
-        }).catch(err => {
-            log.error(`Service journey, method: get, error: ${err}`);
-        });
-    }
-
     async create(journey) {
         log.debug(`Service journey, method: create, journey = ${JSON.stringify(journey)}`);
-        return journeyModel.create(journey)
-            .catch(err => {
-                log.error(`Service journey, method: create, error: ${err}`);
-            });
-    }
+        const services = ServiceLocator.Services;
+        const dayService = services.dayService;
 
-    async update(id, newJourney) {
-        log.debug(`Service journey, method: update, newJourney = ${JSON.stringify(newJourney)}, id = ${id}`);
-        return journeyModel.findOne({
-            where: { id },
-            attributes: ['id', 'name', 'user_id']
-        }).then(journey => {
-            return journey.update({
-                id: id,
-                name: newJourney.name,
-                calories: newJourney.calories,
-                user_id: newJourney.user_id
-            })
-        }).catch(err => {
-            log.error(`Service journey, method: update, error: ${err}`);
-        });
+        try {
+            const createdJourney = await journeyModel.create(journey);
+            if (createdJourney) {
+                dayService.create({
+                    number: "1",
+                    journey_id: createdJourney.id
+                });
+                return createdJourney;
+            }
+        } catch (err) {
+            log.error(`Service journey, method: create, error: ${err}`);
+        }
     }
 
     async delete(id) {
         log.debug(`Service journey, method: delete, id = ${id}`);
-        return journeyModel.findOne({
-            where: { id },
-            attributes: ['id', 'name', 'user_id']
-        }).then(() => {
-            return journeyModel.destroy({
+
+        try {
+            let result = await journeyModel.destroy({
                 where: {
                     id: id
                 }
             })
-        }).catch(err => {
+            await dayModel.destroy({
+                where: {
+                    journey_id: id
+                }
+            })
+            return result;
+        } catch(err) {
             log.error(`Service journey, method: delete, error: ${err}`);
-        });
+        }
     }
 }
 

@@ -11,7 +11,7 @@ class FoodService {
     async getAll() {
         log.debug(`Service food, method: getAll`);
         return foodModel.findAll({
-            attributes: ['id', 'name', 'calories', 'user_id']
+            attributes: ['id', 'name', 'calories']
         }).catch(err => {
             log.error(`Service food, method: getAll, error: ${err}`);
         });
@@ -21,7 +21,7 @@ class FoodService {
         log.debug(`Service food, method: get, id = ${id}`);
         return foodModel.findOne({
             where: {id},
-            attributes: ['id', 'name', 'calories', 'user_id']
+            attributes: ['id', 'name', 'calories']
         }).catch(err => {
             log.error(`Service food, method: get, error: ${err}`);
         });
@@ -39,7 +39,7 @@ class FoodService {
         log.debug(`Service food, method: update, newFood = ${JSON.stringify(newFood)}, id = ${id}`);
         return foodModel.findOne({
             where: {id},
-            attributes: ['id', 'name', 'calories', 'user_id']
+            attributes: ['id', 'name', 'calories']
         }).then(food => {
             return food.update({
                 id: id,
@@ -56,7 +56,7 @@ class FoodService {
         log.debug(`Service food, method: delete, id = ${id}`);
         return foodModel.findOne({
             where: {id},
-            attributes: ['id', 'name', 'calories', 'user_id']
+            attributes: ['id', 'name', 'calories']
         }).then(() => {
             return foodModel.destroy({
                 where: {

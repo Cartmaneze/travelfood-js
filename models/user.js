@@ -2,10 +2,10 @@
 
 module.exports = function(sequelize, DataTypes) {
     let User = sequelize.define('users', {
-        freezeTableName: true,
         id: {
             primaryKey:   true,
-            type:         DataTypes.NUMBER
+            type:         DataTypes.NUMBER,
+            autoIncrement: true
         },
         email: {
             type: DataTypes.STRING

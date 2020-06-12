@@ -6,7 +6,9 @@ const cors         = require('@koa/cors');
 
 const app = new Koa();
 app.name = 'TravelFood';
-app.use(cors());
+app.use(cors({
+    credentials: true
+}));
 
 initializers(app)
     .then(() => {

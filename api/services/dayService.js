@@ -4,27 +4,24 @@ const ServiceLocator = require('../../serviceLocator.js');
 const models         = ServiceLocator.Models;
 const dayModel       = models.days;
 const log            = require('../../logging');
+const Sequelize      = require('sequelize');
+const Op             = Sequelize.Op;
 
 class DayService {
     constructor() {}
 
-    async getAll() {
-        log.debug(`Service day, method: getAll`);
-        return dayModel.findAll({
-            attributes: ['id', 'number', 'journey_id']
-        }).catch(err => {
-            log.error(`Service day, method: getAll, error: ${err}`);
-        });
-    }
-
-    async get(id) {
-        log.debug(`Service day, method: get, id = ${id}`);
-        return dayModel.findOne({
-            where: {id},
-            attributes: ['id', 'number', 'journey_id']
-        }).catch(err => {
-            log.error(`Service day, method: get, error: ${err}`);
-        });
+    async getAll(journeyId) {
+        log.debug(`Service day, method: getAll, journeyId = ${journeyId}`);
+        if(!journeyId || journeyId === "undefined") throw new Error('journeyId not specified')
+        const days = await dayModel.findAll({
+            attributes: ['id'],
+            where: {
+                'journey_id': {
+                    [Op.eq]: journeyId
+                }
+            }
+        })
+        return days;
     }
 
     async create(day) {
@@ -32,30 +29,12 @@ class DayService {
         return dayModel.create(day)
             .then(data => {
                 return {
-                    id: data.id,
-                    number: data.number,
-                    journey_id: data.journey_id
+                    id: data.id
                 }
             }) 
             .catch(err => {
                 log.error(`Service day, method: create, error: ${err}`);
             });
-    }
-
-    async update(id, newDay) {
-        log.debug(`Service day, method: update, newFood = ${JSON.stringify(newDay)}, id = ${id}`);
-        return dayModel.findOne({
-            where: {id},
-            attributes: ['id', 'number', 'journey_id']
-        }).then(food => {
-            return food.update({
-                id: id,
-                number: newDay.number,
-                journey_id: newDay.journey_id
-            })
-        }).catch(err => {
-            log.error(`Service day, method: update, error: ${err}`);
-        });
     }
 
     async delete(id) {

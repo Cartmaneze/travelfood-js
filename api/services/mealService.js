@@ -16,7 +16,8 @@ class MealService {
                 {
                     model: models.foods,
                     attributes: ['id', 'name', 'calories']
-                },
+                }
+                /* ,
                 {
                     model: models.days,
                     attributes: ['id', 'number'],
@@ -28,7 +29,7 @@ class MealService {
                             attributes: ['id', 'email']
                         }]
                     }]
-                }
+                } */
             ]
         }).catch(err => {
             log.error(`Service meal, method: getAll, error: ${err}`);

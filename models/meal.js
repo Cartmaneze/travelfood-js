@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true,
         id: {
             primaryKey:   true,
-            type:         DataTypes.NUMBER
+            type:         DataTypes.NUMBER,
+            autoIncrement: true
         },
         weight: {
             type: DataTypes.NUMBER

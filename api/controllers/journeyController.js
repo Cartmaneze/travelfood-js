@@ -8,7 +8,8 @@ class JourneyController {
     constructor() {}
 
     async getAll(ctx) {
-        let allJourneys = await journeyService.getAll();
+        let userId = ctx.session.passport.user.id;
+        let allJourneys = await journeyService.getAll(userId);
         if (allJourneys) {
             ctx.response.status = 200;
             ctx.body = allJourneys;
@@ -18,36 +19,17 @@ class JourneyController {
         }
     }
 
-    async get(ctx) {
-        let params = ctx.params;
-        let journey = await journeyService.get(params.id);
-        if (journey) {
-            ctx.response.status = 200;
-            ctx.body = journey;
-        } else {
-            ctx.response.status = 400;
-            ctx.body = {error: 'no such journey'};
-        }
-    }
-
     async create(ctx) {
-        let createdJourney = await journeyService.create(ctx.body);
+        let userId = ctx.session.passport.user.id;
+        let params = ctx.body;
+        params.user_id = userId;
+        let createdJourney = await journeyService.create(params);
         if (createdJourney) {
+            ctx.body = {id: createdJourney.id};
             ctx.response.status = 200;
         } else {
             ctx.response.status = 400;
             ctx.body = {error: 'journey was not created'};
-        }
-    }
-
-    async update(ctx) {
-        let id = ctx.params.id;
-        let createdJourney = await journeyService.update(id, ctx.body);
-        if (createdJourney) {
-            ctx.response.status = 201;
-        } else {
-            ctx.response.status = 400;
-            ctx.body = {error: 'journey was not updated'};
         }
     }
 

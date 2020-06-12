@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true,
         id: {
             primaryKey:    true,
-            type:          DataTypes.NUMBER
+            type:          DataTypes.NUMBER,
+            autoIncrement: true
         },
         name: {
             type: DataTypes.STRING
@@ -16,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Food.associate = function (models) {
-        Food.belongsTo(models.users, { onDelete: 'CASCADE', foreignKey: 'user_id' });
+        Food.belongsTo(models.users);
         Food.hasMany(models.meals);
     };
 };
