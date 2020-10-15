@@ -21,6 +21,7 @@ module.exports = [
     //day
     {type: 'get',              path: '/day',               method: dayController.getAll},
     {type: 'post',             path: '/day',               method: dayController.create},
+    {type: 'put',              path: '/day/:id',           method: dayController.update},
     {type: 'delete',           path: '/day/:id',           method: dayController.delete},
 
     //food

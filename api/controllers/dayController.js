@@ -30,6 +30,17 @@ class DayController {
         }
     }
 
+    async update(ctx) {
+        let updatedDay = await dayService.update(ctx.params.id, ctx.body);
+        if (updatedDay) {
+            ctx.response.status = 201;
+            ctx.body = updatedDay;
+        } else {
+            ctx.response.status = 400;
+            ctx.body = {error: 'day was not updated'};
+        }
+    }
+
     async delete(ctx) {
         let id = ctx.params.id;
         let deletedDay = await dayService.delete(id);

@@ -37,6 +37,32 @@ class DayService {
             });
     }
 
+    async update(id, data) {
+        log.debug(`Service day, method: update, id = ${id}`);
+        /* try {
+            let day = dayModel.findOne({
+                where: {id}
+            })
+            return day.update({
+                order: order
+            })
+        } catch (err) {
+            log.error(`Service day, method: update, error: ${err}`);
+        } */
+
+        return dayModel.findOne({
+            where: {id},
+            attributes: ['order']
+        }).then(day => {
+            return day.update({
+                id: id,
+                order: data.order
+            })
+        }).catch(err => {
+            log.error(`Service day, method: delete, error: ${err}`);
+        });
+    }
+
     async delete(id) {
         log.debug(`Service day, method: delete, id = ${id}`);
         return dayModel.findOne({

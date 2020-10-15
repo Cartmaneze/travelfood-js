@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
         },
         number: {
             type: DataTypes.STRING
+        },
+        order: {
+            type: DataTypes.STRING
         }
     });
 

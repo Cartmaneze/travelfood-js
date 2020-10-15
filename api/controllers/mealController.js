@@ -8,7 +8,9 @@ class MealController {
     constructor() {}
 
     async getAll(ctx) {
-        let allMeals = await mealService.getAll();
+        let dayId = ctx.query.dayId;
+        let allMeals = await mealService.getAll(dayId);
+        allMeals = allMeals || {meals: [], order: []};
         if (allMeals) {
             ctx.response.status = 200;
             ctx.body = allMeals;
